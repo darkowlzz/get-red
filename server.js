@@ -8,7 +8,7 @@ var port = process.env.port || 3000; //port set to 3000
 //app specific configurations
 //==================================================
 
-app.use(express.static(__dirname + 'public/'));
+app.use(express.static(__dirname + '/app'));
 app.set('view engine', 'jade');
 
 
@@ -16,11 +16,8 @@ app.set('view engine', 'jade');
 //============================================
 
 app.get('/', function(req, res){
-	res.render('home');
-});
+	res.sendFile('./app/index.html');
 
-app.get('/about', function(req, res){
-	res.render('about');
 });
 
 app.use(function(req, res, next){
