@@ -12,8 +12,6 @@ md-toolbar h1 {
 }
 
 #description {
-  margin-left: 20px;
-  margin-right: 20px;
   margin-top: 10px;
 
   padding-left: 20px;
@@ -26,12 +24,20 @@ md-toolbar h1 {
 }
 
 #content {
-  margin-left: 20px;
-  margin-right: 20px;
   margin-top: 10px;
   margin-bottom: 30px;
 
   padding-left: 20px;
   padding-right: 20px;
   padding-bottom: 20px;
+}
+
+.mobile {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.desktop {
+  margin-left: 300px;
+  margin-right: 300px;
 }

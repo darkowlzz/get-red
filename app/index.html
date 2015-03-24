@@ -15,12 +15,12 @@
       </md-toolbar>
 
       <!-- Container #2 -->
-      <md-content id="description">
+      <md-content id="description" ng-class="{mobile: isMobile, desktop: isDesktop}">
         <p>{{ description }}</p>
       </md-content>
 
       <!-- Container #3 -->
-      <md-content id="content">
+      <md-content id="content" ng-class="{mobile: isMobile, desktop: isDesktop}">
         <form name="userForm">
           <h3>Contact Details</h3>
           <div layout="column">
@@ -45,7 +45,7 @@
             <div>
               <md-input-container>
                 <label>Address</label>
-                <textarea ng-model="user.address" columns="1" md-maxlength="150" placeholder="House No. 4, X Street, Y Colony"></textarea>
+                <textarea ng-model="user.address" columns="2" md-maxlength="150" placeholder="House No. 4, X Street, Y Colony"></textarea>
               </md-input-container>
             </div>
             <h3>Requirements</h3>
@@ -73,6 +73,11 @@
             </div>
           </div>
         </form>
+        <section layout="row" layout-sm="column" layout-align="center center">
+          <md-button layout-align="center center" class="md-raised md-accent">
+          Get Red
+          </md-button>
+        </section>
       </md-content>
     </div>
 
