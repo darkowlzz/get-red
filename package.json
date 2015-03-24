@@ -19,7 +19,6 @@
   "homepage": "https://github.com/STEPIndia/get-red",
   "dependencies": {
     "bower": "^1.3.12",
-    "express": "*",
-  	"jade" : "*"
-	}
+    "express": "^4.12.3"
+  }
 }
