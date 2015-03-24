@@ -2,15 +2,78 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
     <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
-    <link rel="stylesheet" href="bower_components/angular-material/default-theme.css">
     <link rel="stylesheet" href="css/getblood.css">
   </head>
 
-  <body ng-app="getBlood">
+  <body ng-app="getBlood" ng-controller="GetBloodCtrl">
+    <div layout="column">
+      <!-- Container #1 -->
+      <md-toolbar layout="row">
+        <h1>Get-Red</h1>
+      </md-toolbar>
 
-    <div>
-      Hello Blood
+      <!-- Container #2 -->
+      <md-content id="description">
+        <p>{{ description }}</p>
+      </md-content>
+
+      <!-- Container #3 -->
+      <md-content id="content">
+        <form name="userForm">
+          <h3>Contact Details</h3>
+          <div layout="column">
+            <div>
+              <md-input-container>
+                <label>Name</label>
+                <input ng-model="user.name" placeholder="John Doe">
+              </md-input-container>
+            </div>
+            <div>
+              <md-input-container>
+                <label>Email</label>
+                <input ng-model="user.email" type="email" placeholder="johndoe@example.com">
+              </md-input-container>
+            </div>
+            <div>
+              <md-input-container>
+                <label>Phone</label>
+                <input ng-model="user.phone" type="tel" placeholder="1234567890">
+              </md-input-container>
+            </div>
+            <div>
+              <md-input-container>
+                <label>Address</label>
+                <textarea ng-model="user.address" columns="1" md-maxlength="150" placeholder="House No. 4, X Street, Y Colony"></textarea>
+              </md-input-container>
+            </div>
+            <h3>Requirements</h3>
+            <div layout="column" style="height: 100px;">
+              <md-select placeholder="Blood Group Needed" ng-model="user.group">
+                <md-option value="A+">A+</md-option>
+                <md-option value="A-">A-</md-option>
+                <md-option value="B+">B+</md-option>
+                <md-option value="B-">B-</md-option>
+                <md-option value="O+">O+</md-option>
+                <md-option value="O-">O-</md-option>
+              </md-select>
+            </div>
+            <div>
+              <md-input-container>
+                <label>Quantity (in Litres)</label>
+                <input ng-model="user.quantity" type="number" placeholder="4">
+              </md-input-container>
+            </div>
+            <div>
+              <md-input-container>
+                <label>Required On</label>
+                <input ng-model="user.date" type="date" placeholder="mm/dd/yyyy">
+              </md-input-container>
+            </div>
+          </div>
+        </form>
+      </md-content>
     </div>
 
     <script src="bower_components/angular/angular.js"></script>
