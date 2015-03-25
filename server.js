@@ -9,14 +9,20 @@ var port = process.env.port || 3000; //port set to 3000
 //app specific configurations
 //==================================================
 
-app.use(express.static(__dirname + '/app'));
+app.use('/', express.static(__dirname + '/app/'));
 
 //router configurations
 //============================================
 
-router.get('/', function(req, res){
-	res.sendFile('./app/index.html');
+router.get('/', function (req, res) {
+	res.render('/index.html');
 });
+
+/*
+router.get('/about', function (req, res) {
+  res.send('this is cool');
+});
+*/
 
 app.use('/', router);
 
