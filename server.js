@@ -14,8 +14,12 @@ app.use(express.static(__dirname + '/app'));
 //router configurations
 //============================================
 
-router.get('/', function(req, res){
+router.get('/', function (req, res) {
 	res.sendFile('./app/index.html');
+});
+
+router.get('/about', function (req, res) {
+  res.sendFile('./app/about.html');
 });
 
 app.use('/', router);
