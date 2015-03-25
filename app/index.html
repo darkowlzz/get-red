@@ -10,18 +10,19 @@
   <body ng-app="getBlood" ng-controller="GetBloodCtrl">
     <div layout="column">
       <!-- Container #1 -->
-      <md-toolbar layout="row">
-        <h1>Get-Red</h1>
+      <md-toolbar class="md-tall md-warn" layout="row">
+        <h1 class="mainTitle" >Get-Red</h1>
       </md-toolbar>
 
-      <!-- Container #2 -->
-      <md-content id="description" ng-class="{mobile: isMobile, desktop: isDesktop}">
-        <p>{{ description }}</p>
-      </md-content>
+      <div layout="row" layout-sm="column" layout-align-gt-md="center start" layout-margin layout-fill-gt-md layout-padding-gt-md>
+        <!-- Container #2 -->
+        <md-content id="description" flex flex-gt-md="30" class="md-whiteframe-z5">
+          <p>{{ description }}</p>
+        </md-content>
 
-      <!-- Container #3 -->
-      <md-content id="content" ng-class="{mobile: isMobile, desktop: isDesktop}">
-        <form name="userForm">
+        <!-- Container #3 -->
+        <md-content id="content" flex flex-gt-md="55" class="md-whiteframe-z5">
+          <h2>Blood Requirement Form</h2>
           <h3>Contact Details</h3>
           <div layout="column">
             <div>
@@ -72,13 +73,14 @@
               </md-input-container>
             </div>
           </div>
-        </form>
-        <section layout="row" layout-sm="column" layout-align="center center">
-          <md-button layout-align="center center" class="md-raised md-accent">
-          Get Red
-          </md-button>
-        </section>
-      </md-content>
+
+          <section layout="row" layout-sm="column" layout-align="center center">
+            <md-button ng-click="submit()" layout-align="center center" class="md-raised md-accent">
+              Get Red
+            </md-button>
+          </section>
+        </md-content>
+      </div>
     </div>
 
     <script src="bower_components/angular/angular.js"></script>
@@ -86,6 +88,7 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="js/getblood.js"></script>
   </body>
 </html>

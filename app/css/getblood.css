@@ -1,3 +1,7 @@
+.mainTitle {
+  font-size: 3em;
+}
+
 md-toolbar h1 {
   margin: auto;
 }
@@ -12,7 +16,7 @@ md-toolbar h1 {
 }
 
 #description {
-  margin-top: 10px;
+  margin-top: 30px;
 
   padding-left: 20px;
   padding-right: 20px;
@@ -24,7 +28,7 @@ md-toolbar h1 {
 }
 
 #content {
-  margin-top: 10px;
+  margin-top: 30px;
   margin-bottom: 30px;
 
   padding-left: 20px;
