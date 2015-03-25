@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" ng-app="getBlood">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
@@ -7,14 +7,23 @@
     <link rel="stylesheet" href="css/getblood.css">
   </head>
 
-  <body ng-app="getBlood" ng-controller="MainCtrl">
+  <body ng-controller="MainCtrl">
+    <div class="ground" layout="column">
+      <!-- Container #1 -->
+      <md-toolbar class="md-tall md-warn" layout="row">
+        <h1 class="mainTitle" >Get-Red</h1>
+      </md-toolbar>
 
-    <div layout="row">
-      <a href="">Home</a>
-      <a href="about">About</a>
+      <md-content>
+        <section class="ground" layout="row" layout-align="center center">
+          <md-button ng-click="go('/')">Home</md-button>
+          <md-button ng-click="go('/about')">About</md-button>
+        </section>
+      </md-content>
+
+      <div ng-view></div>
+
     </div>
-
-    <div ng-view></div>
 
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-aria/angular-aria.js"></script>
@@ -22,6 +31,7 @@
     <script src="bower_components/angular-material/angular-material.js"></script>
     <script src="bower_components/angular-material-icons/angular-material-icons.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
     <script src="js/getblood.js"></script>
   </body>
 </html>
