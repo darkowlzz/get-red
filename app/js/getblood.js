@@ -13,8 +13,8 @@ getBlood.controller('MainCtrl', [
 
 
 getBlood.controller('GetBloodCtrl', [
-  '$scope', '$routeParams', '$timeout',
-  function ($scope, $routeParams, $timeout) {
+  '$scope', '$routeParams', '$timeout', '$http',
+  function ($scope, $routeParams, $timeout, $http) {
     $scope.description = 'This is the description part of the page. ' +
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed feugiat interdum felis sed interdum. Pellentesque ultrices est eget placerat tempor. Curabitur iaculis porttitor mauris. Sed dictum mattis est, sit amet tempor leo placerat id.';
 
@@ -24,43 +24,26 @@ getBlood.controller('GetBloodCtrl', [
     $scope.submitted = false;
     $scope.error = false;
 
-    /*
-    $scope.isMobile = false;
-    $scope.isDesktop = false;
-
-    if ($mdMedia('gt-md')) {
-      $scope.isDesktop = true;
-    } else {
-      $scope.isMobile = true;
-    }
-    */
-
     $scope.submit = function () {
-      console.log('submitting', $scope.user);
       var result = validate($scope.user);
-      console.log('result', result);
 
       if (result) {
         $scope.error = false;
         $scope.loading = true;
 
-        $timeout(function () {
-          console.log('timeout over!');
-          $scope.submitted = true;
-        }, 4000);
-        /*
-        $http.post()
-          .success(function () {
+        $http.post('/submit', { data: $scope.user })
+          .success(function (o) {
             $scope.submitted = true;
+          })
+          .error(function (data, status, headers, config) {
+            console.log('Error in posting');
           });
-        */
       } else {
         $scope.error = true;
       }
     }
 
     function validate(data) {
-      console.log('validating', data);
       var result = true;
 
       // FIXME: Perform better validation
