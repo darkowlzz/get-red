@@ -6,10 +6,10 @@ var express  = require('express'),
     bodyParser = require('body-parser')
     mongoose = require('mongoose');
 
-var port = process.env.port || 3000; //port set to 3000
+var port = process.env.PORT || 3000; //port set to 3000
 
 // mongodb uri
-var uristring = process.env.MONGODB_URI;
+var uristring = process.env.MONGODB_URI || '';
 
 mongoose.connect(uristring, function (err, res) {
   if (err) {
