@@ -6,12 +6,14 @@ var express  = require('express'),
     bodyParser = require('body-parser')
     mongoose = require('mongoose');
 
+var port = process.env.port || 3000; //port set to 3000
+
 // mongodb uri
-var uristring = '';
+var uristring = process.env.MONGODB_URI;
 
 mongoose.connect(uristring, function (err, res) {
   if (err) {
-    console.log('Error connectin to db');
+    console.log('Error connecting to db');
   } else {
     console.log('Succeeded in connecting to db');
   }
@@ -27,10 +29,7 @@ var reqSchema = new mongoose.Schema({
   reqOn: { type: String }
 });
 
-var BloodReq = mongoose.model('bloodreq', reqSchema);
-
-
-var port = process.env.port || 3000; //port set to 3000
+var BloodReq = mongoose.model('bloodreqs', reqSchema);
 
 //app specific configurations
 //==================================================
