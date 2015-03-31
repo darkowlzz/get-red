@@ -24,7 +24,7 @@ var reqSchema = new mongoose.Schema({
   email: { type: String },
   phone: { type: String },
   address: { type: String },
-  reqBloodType: { type: String },
+  group: { type: String },
   quantity: { type: Number },
   reqOn: { type: String }
 });
@@ -58,7 +58,7 @@ router.post('/submit', function (req, res) {
   });
   aReq.save(function (err, obj) {
     if (err) {
-      console.log('Error on save!')
+      console.log('Error on save!');
     } else {
       console.log('Saving', obj);
       res.json(obj);
