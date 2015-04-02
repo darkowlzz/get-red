@@ -17,7 +17,7 @@ mongoose.connect(uristring, function (err, res) {
   } else {
     console.log('Succeeded in connecting to db');
   }
-})
+});
 
 var reqSchema = new mongoose.Schema({
   name: { type: String },
@@ -26,10 +26,16 @@ var reqSchema = new mongoose.Schema({
   address: { type: String },
   group: { type: String },
   quantity: { type: Number },
-  reqOn: { type: String }
+  reqOn: { type: String },
+  reqId: { type: Number }
 });
-
 var BloodReq = mongoose.model('bloodreqs', reqSchema);
+
+var statusSchema = new mongoose.Schema({
+  name: { type: String },
+  count: { type: Number }
+});
+var Status = mongoose.model('status', statusSchema);
 
 //app specific configurations
 //==================================================
@@ -56,14 +62,26 @@ router.post('/submit', function (req, res) {
     quantity: data.quantity || '',
     date: data.date || ''
   });
-  aReq.save(function (err, obj) {
-    if (err) {
-      console.log('Error on save!');
-    } else {
-      console.log('Saving', obj);
-      res.json(obj);
-    }
+
+  Status.findOne({name: 'bloodRequests'}, function (err, stat) {
+    aReq.reqId = stat.count + 1;
+    stat.count = aReq.reqId;
+    stat.save(function (err) {
+      if (err) {
+        console.log('error in updating')
+      } else {
+        aReq.save(function (err, obj) {
+          if (err) {
+            console.log('Error on save!');
+          } else {
+            console.log('Saving', obj);
+            res.json(obj);
+          }
+        });
+      }
+    });
   });
+
 });
 
 
