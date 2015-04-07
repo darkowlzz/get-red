@@ -27,7 +27,7 @@ var reqSchema = new mongoose.Schema({
   group: { type: String },
   quantity: { type: Number },
   reqOn: { type: String },
-  reqId: { type: Number }
+  id: { type: Number }
 });
 var BloodReq = mongoose.model('bloodreqs', reqSchema);
 
@@ -64,8 +64,8 @@ router.post('/submit', function (req, res) {
   });
 
   Status.findOne({name: 'bloodRequests'}, function (err, stat) {
-    aReq.reqId = stat.count + 1;
-    stat.count = aReq.reqId;
+    aReq.id = stat.count + 1;
+    stat.count = aReq.id;
     stat.save(function (err) {
       if (err) {
         console.log('error in updating')
