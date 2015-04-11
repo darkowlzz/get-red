@@ -61,17 +61,32 @@
         <div>
           <md-input-container>
             <label>Quantity (in Litres)</label>
-            <input required name="quantity" ng-model="user.quantity" type="number" placeholder="4">
+            <input required name="quantity" ng-model="user.quantity" type="number" min="0" max="20" placeholder="4">
             <div ng-messages="bloodForm.quantity.$error">
               <div ng-message="required">This is required.</div>
             </div>
           </md-input-container>
         </div>
-        <div>
-          <md-input-container>
-            <label>Required On</label>
-            <input required name="date" ng-model="user.date" type="date" placeholder="mm/dd/yyyy">
-            <div ng-messages="bloodForm.date.$error">
+        <p>Required on</p>
+        <div layout="row">
+          <md-input-container flex>
+            <label>Day</label>
+            <input required name="day" ng-model="user.date.day" type="number" min="1" max="31" placeholder="1-31">
+            <div ng-messages="bloodForm.day.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container flex>
+            <label>Month</label>
+            <input required name="month" ng-model="user.date.month" type="number" min="1" max="12" placeholder="1-12">
+            <div ng-messages="bloodForm.month.$error">
+              <div ng-message="required">This is required.</div>
+            </div>
+          </md-input-container>
+          <md-input-container flex>
+            <label>Year</label>
+            <input required name="year" ng-model="user.date.year" type="number" min="2015" max="2016" placeholder="2015-16">
+            <div ng-messages="bloodForm.year.$error">
               <div ng-message="required">This is required.</div>
             </div>
           </md-input-container>

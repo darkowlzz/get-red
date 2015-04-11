@@ -26,7 +26,9 @@ var reqSchema = new mongoose.Schema({
   address: { type: String },
   group: { type: String },
   quantity: { type: Number },
-  reqOn: { type: String },
+  reqOn: { type: Date },
+  done: { type: Boolean },
+  modifiedOn: { type: Date },
   id: { type: Number }
 });
 var BloodReq = mongoose.model('bloodreqs', reqSchema);
@@ -60,7 +62,10 @@ router.post('/submit', function (req, res) {
     address: data.address || '',
     group: data.group || '',
     quantity: data.quantity || '',
-    date: data.date || ''
+    reqOn: new Date(data.date.year, data.date.month, data.date.day) ||
+           new Date,
+    modifiedOn: new Date,
+    done: false
   });
 
   Status.findOne({name: 'bloodRequests'}, function (err, stat) {
