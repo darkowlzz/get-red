@@ -62,7 +62,7 @@ router.post('/submit', function (req, res) {
     address: data.address || '',
     group: data.group || '',
     quantity: data.quantity || '',
-    reqOn: new Date(data.date.year, data.date.month, data.date.day) ||
+    reqOn: new Date(data.date.year, data.date.month - 1, data.date.day) ||
            new Date,
     modifiedOn: new Date,
     done: false
